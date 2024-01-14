@@ -1,2 +1,14 @@
-<h1>Images#index</h1>
-<p>Find me in app/views/images/index.html.erb</p>
+<h1>画像生成</h1>
+<p>文章を入力して画像を生成してみよう！</p>
+
+<%= form_with url: images_path, method: :post, model: nil, local: true do |form| %>
+  <%= form.label :prompt, 'プロンプト:' %>
+  <%= form.text_field :prompt %><br/>
+  <%= submit_tag '生成' %>
+<% end %>
+
+<% if @image_url %>
+  <img src="<%= @image_url %>" alt="Generated Image">
+<% else %>
+  <p>まだ画像が出力されていません。</p>
+<% end %>
